@@ -204,7 +204,7 @@ def _to_monitor_format(prog: Dict, all_progs: Dict[str, Dict]) -> Dict:
 def main() -> None:
     # Load environment variables from .env file
     load_dotenv(verbose=True)
-    
+
     parser = argparse.ArgumentParser(
         description="Replay viewer for completed SkyDiscover runs",
     )
@@ -251,11 +251,7 @@ def main() -> None:
     if not summary_model and os.environ.get("OPENAI_API_KEY"):
         summary_model = "gpt-5-mini"
     if summary_model:
-        server.configure_summary(
-            model=summary_model,
-            api_base=args.summary_api_base,
-            interval=0
-        )
+        server.configure_summary(model=summary_model, api_base=args.summary_api_base, interval=0)
 
     server.start()
 
