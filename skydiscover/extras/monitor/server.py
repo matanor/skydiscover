@@ -195,7 +195,7 @@ class MonitorServer:
         """
         self._summary_model = model
         self._summary_api_key = api_key or os.environ.get("OPENAI_API_KEY", "")
-        self._summary_api_base = api_base
+        self._summary_api_base = api_base.rstrip("/")
         self._summary_top_k = top_k
         self._summary_interval = interval
         self._summary_executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="summary")
